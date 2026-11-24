@@ -1,0 +1,14 @@
+.build/
+.swiftpm/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+.screencatalog/
+__pycache__/
+*.pyc
+.DS_Store
+.screencatalog-shared/
+
+# Left by `pip install ./tool`
+tool/build/
+*.egg-info/

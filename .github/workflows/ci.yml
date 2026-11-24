@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  tool:
+    name: Tool tests (Python ${{ matrix.python }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+        python: ["3.9", "3.13"]
+        # ubuntu-latest (26.04) has no Python 3.9 build; the oldest supported Python runs on 24.04.
+        exclude:
+          - os: ubuntu-latest
+            python: "3.9"
+        include:
+          - os: ubuntu-24.04
+            python: "3.9"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Unit tests
+        working-directory: tool
+        run: python -m unittest test_screencatalog test_screencatalog_ui test_screencatalog_config
+      - name: The documented install works
+        run: |
+          python -m pip install ./tool
+          screencatalog --help
+          screencatalog-ui --help
+
+  package:
+    name: Swift package tests
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: swift test
+        run: swift test

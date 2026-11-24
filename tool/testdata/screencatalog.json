@@ -1,0 +1,5 @@
+{
+  "app": { "bundleId": "com.example.sample" },
+  "build": { "project": "Sample.xcodeproj", "scheme": "Sample" },
+  "git": { "buildChurnPaths": ["Generated/schema.json"] }
+}

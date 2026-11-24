@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "screencatalog"
+version = "0.1.0"
+description = "Record, compare and review a screenshot catalog of an iOS app's screen variants"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+screencatalog = "screencatalog:cli"
+screencatalog-ui = "screencatalog_ui:cli"
+
+[tool.setuptools]
+py-modules = ["screencatalog", "screencatalog_ui"]

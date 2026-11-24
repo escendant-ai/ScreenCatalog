@@ -1,0 +1,10 @@
+{
+  "app": { "bundleId": "com.example.ScreenCatalogExample" },
+  "build": {
+    "project": "ScreenCatalogExample.xcodeproj",
+    "scheme": "ScreenCatalogExample",
+    "configuration": "Debug",
+    "derivedDataPath": ".build"
+  },
+  "storage": { "type": "directory", "path": ".screencatalog-shared" }
+}
